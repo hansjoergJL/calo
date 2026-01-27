@@ -1,0 +1,86 @@
+# Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Build
+DerivedData/
+build/
+*.build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Config (API keys and secrets)
+Config.xcconfig
+*.xcconfig
+secrets/
+
+# SwiftPM
+.swiftpm/
+*.resolved
+
+# CocoaPods
+Pods/
+*.podspec
+Podfile.lock
+
+# Carthage
+Carthage/
+
+# Accio
+Dependencies/
+.accio/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+fastlane/README.md
+
+# Code coverage
+*.gcda
+*.gcno
+*.profdata
+*.coverage
+
+# Testing
+*.xcresult
+
+# SwiftLint
+.swiftlint.yml.cache
+
+# Misc
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.log
+
+# Swift Package Manager dependencies
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# Playground
+*.playground/*
+!*.playground/Contents.swift
+!*.playground/contents.xcplayground
+
+# Documentation
+docs/build/
+.jazzy/
+
+# Temporary files
+*.tmp
+temp/
+tmp/
