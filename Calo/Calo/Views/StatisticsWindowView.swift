@@ -90,6 +90,7 @@ struct StatisticsWindowView: View {
 struct ResizeHandle: View {
     @Binding var size: CGSize
     @State private var isDragging = false
+    @State private var startSize: CGSize = .zero
     
     var body: some View {
         Circle()
@@ -102,9 +103,12 @@ struct ResizeHandle: View {
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        isDragging = true
-                        let newWidth = max(400, size.width + value.translation.width)
-                        let newHeight = max(500, size.height + value.translation.height)
+                        if !isDragging {
+                            startSize = size
+                            isDragging = true
+                        }
+                        let newWidth = max(400, startSize.width + value.translation.width)
+                        let newHeight = max(500, startSize.height + value.translation.height)
                         size = CGSize(width: newWidth, height: newHeight)
                     }
                     .onEnded { _ in
@@ -126,16 +130,19 @@ struct StatisticsContentView: View {
     @State private var selectedPeriod: TimePeriod = .week
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                // Period Selector
-                Picker("Zeitraum", selection: $selectedPeriod) {
-                    ForEach(TimePeriod.allCases) { period in
-                        Text(period.displayName).tag(period)
-                    }
+        VStack(spacing: 16) {
+            // Period Selector
+            Picker("Zeitraum", selection: $selectedPeriod) {
+                ForEach(TimePeriod.allCases) { period in
+                    Text(period.displayName).tag(period)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .padding(.top, 8)
+            
+            ScrollView {
+                VStack(spacing: 20) {
                 
                 // Calorie Chart
                 VStack(alignment: .leading, spacing: 12) {
@@ -235,8 +242,9 @@ struct StatisticsContentView: View {
                     }
                 }
                 .padding(.vertical)
+                }
+                .padding(.horizontal)
             }
-            .padding(.vertical)
         }
     }
     
