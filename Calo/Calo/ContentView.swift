@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var selectedDate = Date()
     @State private var showAddFood = false
     @State private var showHelp = false
+    @State private var showStatistics = false
     
     // MARK: - Body
     
@@ -53,6 +54,14 @@ struct ContentView: View {
                     }
                 }
                 
+                ToolbarItem(placement: .automatic) {
+                    Button {
+                        showStatistics = true
+                    } label: {
+                        Label("Statistiken", systemImage: "chart.xyaxis.line")
+                    }
+                }
+                
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         showAddFood = true
@@ -66,6 +75,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showHelp) {
                 HelpView()
+            }
+            .sheet(isPresented: $showStatistics) {
+                StatisticsView()
             }
         }
     }
