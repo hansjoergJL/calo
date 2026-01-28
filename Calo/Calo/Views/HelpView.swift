@@ -12,6 +12,14 @@ struct HelpView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    // MARK: - Computed Properties
+    
+    private var versionString: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        return "Version \(version) (Build \(build))"
+    }
+    
     // MARK: - Body
     
     var body: some View {
@@ -129,7 +137,7 @@ struct HelpView: View {
                     
                     // Footer
                     VStack(spacing: 4) {
-                        Text("Version 1.0 (Build 2)")
+                        Text(versionString)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
