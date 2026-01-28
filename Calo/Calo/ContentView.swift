@@ -18,6 +18,7 @@ struct ContentView: View {
     
     @State private var selectedDate = Date()
     @State private var showAddFood = false
+    @State private var showHelp = false
     
     // MARK: - Body
     
@@ -44,6 +45,14 @@ struct ContentView: View {
             }
             .navigationTitle("calo")
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        showHelp = true
+                    } label: {
+                        Label("Hilfe", systemImage: "questionmark.circle")
+                    }
+                }
+                
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         showAddFood = true
@@ -54,6 +63,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showAddFood) {
                 AddFoodView()
+            }
+            .sheet(isPresented: $showHelp) {
+                HelpView()
             }
         }
     }
