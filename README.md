@@ -14,6 +14,7 @@
 - **Automatic Calorie Lookup** - Search foods in German and English using OpenFoodFacts and USDA databases
 - **Recent Foods** - Quick re-entry of previously logged items with automatic calorie recalculation
 - **Weight Tracking** - Optional daily weight logging with notes
+- **Charts** - Calorie consumption and weight trends with customizable time periods
 - **iCloud Sync** - Seamless data synchronization across all your devices
 - **Offline Support** - Manual calorie entry when APIs are unavailable
 
@@ -22,6 +23,8 @@
 - **Unit Conversion** - Support for grams, milliliters, pieces, slices, tablespoons, and portions
 - **German-First UI** - Native German interface with metric units throughout
 - **Daily Summary** - At-a-glance view of total calories and current weight
+- **Floating Statistics Window** - Resizable, draggable chart view (macOS)
+- **Built-in Help** - Comprehensive feature guide and quick start instructions
 
 ### Technical Highlights
 - Built with SwiftUI and SwiftData for modern iOS/macOS development
@@ -158,7 +161,8 @@ xcodebuild -project Calo.xcodeproj -scheme Calo -destination 'platform=iOS Simul
 - [ ] Full English localization
 - [ ] Barcode scanning for packaged foods
 - [ ] Daily calorie goals and tracking
-- [ ] Weight trend charts
+- [x] Weight trend charts
+- [x] Calorie consumption charts
 - [ ] HealthKit integration
 - [ ] iOS widgets
 - [ ] Export data to CSV/PDF
