@@ -129,7 +129,7 @@ struct HelpView: View {
                     
                     // Footer
                     VStack(spacing: 4) {
-                        Text("Version 1.0")
+                        Text("Version 1.0 (Build 2)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
