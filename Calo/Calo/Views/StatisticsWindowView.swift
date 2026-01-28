@@ -72,10 +72,11 @@ struct StatisticsWindowView: View {
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.3), radius: 20, x: 0, y: 10)
             .overlay(
-                // Resize handle
+                // Resize handle - positioned at bottom-right corner
                 ResizeHandle(size: $windowSize)
-                    .frame(width: 20, height: 20)
-                    .position(x: windowSize.width - 10, y: windowSize.height - 10)
+                    .frame(width: 30, height: 30)
+                    .padding([.trailing, .bottom], 8)
+                , alignment: .bottomTrailing
             )
             .position(
                 x: windowPosition.x + windowSize.width / 2 + dragOffset.width,
@@ -93,13 +94,15 @@ struct ResizeHandle: View {
     @State private var startSize: CGSize = .zero
     
     var body: some View {
-        Circle()
-            .fill(Color.secondary.opacity(0.5))
-            .overlay(
-                Image(systemName: "arrow.up.left.and.arrow.down.right")
-                    .font(.system(size: 8))
-                    .foregroundStyle(.white)
-            )
+        ZStack {
+            Circle()
+                .fill(Color.blue.opacity(0.7))
+                .shadow(radius: 2)
+            
+            Image(systemName: "arrow.up.left.and.arrow.down.right")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundStyle(.white)
+        }
             .gesture(
                 DragGesture()
                     .onChanged { value in
