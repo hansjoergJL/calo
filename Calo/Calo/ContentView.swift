@@ -76,8 +76,10 @@ struct ContentView: View {
             .sheet(isPresented: $showHelp) {
                 HelpView()
             }
-            .sheet(isPresented: $showStatistics) {
-                StatisticsView()
+        }
+        .overlay {
+            if showStatistics {
+                StatisticsWindowView(isPresented: $showStatistics)
             }
         }
     }
